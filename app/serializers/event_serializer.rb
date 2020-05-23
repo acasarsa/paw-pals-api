@@ -2,6 +2,6 @@ class EventSerializer
     include FastJsonapi::ObjectSerializer
 
 
-    attributes :attendees
+    attributes :title, :image, :date, :description
 
 end
