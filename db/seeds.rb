@@ -9,15 +9,16 @@ require 'rest-client'
 require 'json'
 
 
-
-User.destroy_all
-puts ".... destroying users"
 Dog.destroy_all
 puts "... destorying dogs"
-DogUserPair.destroy_all
-puts "... destroying friendships"
-MeetUp.destroy_all
-puts "...destroying meet-ups"
+Event.destroy_all
+puts "...destroying events"
+Follow.destroy_all
+puts "... destroying follows"
+Attendee.destroy_all
+puts "...destroying attendees"
+
+
 
 # rm = RestClient.get 
 # var myHeaders = new Headers();
@@ -53,17 +54,105 @@ dog_images = [
 
 
 12.times do 
-    Dog.create!(name: Faker::Creature::Dog.meme_phrase.titleize, breed: Faker::Creature::Dog.breed, tagline: Faker::Creature::Dog.sound, age: Faker::Creature::Dog.age, 
-    gender: Faker::Creature::Dog.gender, size: Faker::Creature::Dog.size, image: dog_images.pop(), description: Faker::Lorem.paragraphs(number: 2))
+    Dog.create!(
+        name: Faker::Creature::Dog.name, 
+        breed: Faker::Creature::Dog.breed, 
+        status: Faker::Creature::Dog.sound, 
+        age: Faker::Creature::Dog.age, 
+        gender: Faker::Creature::Dog.gender, 
+        size: Faker::Creature::Dog.size, 
+        image: dog_images.pop(), 
+        description: Faker::Creature::Dog.meme_phrase,
+        favorite_toy: "stuffed" + " " + Faker::Creature::Animal.name,
+        human: Faker::Name.first_name,
+        username: Faker::Superhero.name.downcase,
+        password: '123'
+    )
 end
 
-6.times do
-    User.create!(username: Faker::JapaneseMedia::DragonBall.character, password: 123)
-end
+# t.string :name
+# t.string :breed
+# t.text :status
+# t.string :age
+# t.string :gender
+# t.string :size
+# t.string :image
+# t.text :description
+# t.text :favorite_toy
+# t.string :human
+# t.string :username
+# t.string :password
 
-6.times do
-    DogUserPair.create!(user: User.all.sample, dog: Dog.all.sample)
-end
+
+
+    e1 = Event.create!(
+        title: "Park Party!!",
+        date: Date.new(2020,05,28),
+        description: "Come play!! You can chase me! If you catch me I'll tell you where I burried the bone!",
+        image: 'https://i.ibb.co/Gc8R0t1/txhh-best-practices-when-taking-dog-park.png'
+    )
+    e2 = Event.create!(
+        title: "Pool Party!",
+        date: Date.new(20,07,04),
+        description: "hooman haz lotz of snakz",
+        image: 'https://i.ibb.co/tq5TVmG/pool-doggo.jpg'
+        # image: '../public/images/park-dogs.png'
+    )
+
+
+    follow0 = Follow.create!(follower: Dog.first, followee: Dog.second)
+    follow1 = Follow.create!(follower: Dog.second, followee: Dog.first)
+    follow2 = Follow.create!(follower: Dog.third, followee: Dog.second )
+    follow3 = Follow.create!(follower: Dog.fourth, followee: Dog.second)
+    follow4 = Follow.create!(follower: Dog.fifth, followee: Dog.second)
+    follow5 = Follow.create!(follower: Dog.fourth, followee: Dog.first)
+
+    # follow0 = Follow.create!(follower_id: Dog.first.id, followee_id: Dog.second.id)
+    # follow1 = Follow.create!(follower_id: Dog.second.id, followee_id: Dog.first.id)
+    # follow2 = Follow.create!(follower_id: Dog.first.id, followee_id: Dog.third.id )
+    # follow3 = Follow.create!(follower_id: Dog.last.id, followee_id: Dog.fifth.id)
+    # follow4 = Follow.create!(follower_id: Dog.fifth.id, followee_id: Dog.fourth.id)
+    # follow5 = Follow.create!(follower_id: Dog.fourth.id, followee_id: Dog.fifth.id)
+
+    a1 = Attendee.create!(dog: Dog.first, event: Event.first)
+    a2 = Attendee.create!(dog: Dog.first, event: Event.last)
+    a3 = Attendee.create!(dog: Dog.second, event: Event.first)
+    a4 = Attendee.create!(dog: Dog.last, event: Event.last)
+    a5 = Attendee.create!(dog: Dog.last, event: Event.first)
+    a6 = Attendee.create!(dog: Dog.third, event: Event.first)
+    a7 = Attendee.create!(dog: Dog.fourth, event: Event.first)
+    a8 = Attendee.create!(dog: Dog.fifth, event: Event.last)
+    a9 = Attendee.create!(dog: Dog.fourth, event: Event.last)
+
+# Faker::Books::Lovecraft.sentence - maybe for description
+# Faker::JapaneseMedia::SwordArtOnline.item for favorite_toy
+# Faker::Appliance.equipment ^
+# Faker::Games::Zelda.item ^
+# Faker::Games::Dota.item ^
+
+# t.string :name
+# t.string :breed
+# t.text :status
+# t.string :age
+# t.string :gender
+# t.string :size
+# t.string :image
+# t.text :description
+# t.text :favorite_toy
+# t.string :human
+# t.string :username
+# t.string :password
+
+# 6.times do
+#     DogUserPair.create!(user: User.all.sample, dog: Dog.all.sample)
+# end
+
+# meetup1 = MeetUp.create(first_dog_user_pair_id: DogUserPair.first.id,  second_dog_user_pair_id: DogUserPair.last.id, date: Date.parse("05/30/2020"))
+# meetup2 = MeetUp.create(first_dog_user_pair_id: DogUserPair.first.id,  second_dog_user_pair_id: DogUserPair.second.id, date: Date.parse("05/24/2020"))
+# meetup3 = MeetUp.create(first_dog_user_pair_id: DogUserPair.last.id,  second_dog_user_pair_id: DogUserPair.last.id, date: Date.parse("05/23/2020"))
+# meetup4 = MeetUp.create(first_dog_user_pair_id: DogUserPair.second.id,  second_dog_user_pair_id: DogUserPair.first.id, date: Date.parse("06/01/2020"))
+# meetup5 = MeetUp.create(first_dog_user_pair_id: DogUserPair.fifth.id,  second_dog_user_pair_id: DogUserPair.fifth.id, date: Date.parse("05/28/2020"))
+# meetup6 = MeetUp.create(first_dog_user_pair_id: DogUserPair.fourth.id,  second_dog_user_pair_id: DogUserPair.last.id, date: Date.parse("05/27/2020"))
 
 
 

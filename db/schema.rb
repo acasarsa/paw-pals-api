@@ -10,48 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_152036) do
+ActiveRecord::Schema.define(version: 2020_05_23_161506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dog_user_pairs", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "attendees", force: :cascade do |t|
     t.bigint "dog_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["dog_id"], name: "index_dog_user_pairs_on_dog_id"
-    t.index ["user_id"], name: "index_dog_user_pairs_on_user_id"
+    t.index ["dog_id"], name: "index_attendees_on_dog_id"
+    t.index ["event_id"], name: "index_attendees_on_event_id"
   end
 
   create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.string "breed"
-    t.string "tagline"
+    t.text "status"
     t.string "age"
     t.string "gender"
     t.string "size"
     t.string "image"
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "meet_ups", force: :cascade do |t|
-    t.date "date"
-    t.integer "first_dog_user_pair_id"
-    t.integer "second_dog_user_pair_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
+    t.text "description"
+    t.text "favorite_toy"
+    t.string "human"
     t.string "username"
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "dog_user_pairs", "dogs"
-  add_foreign_key "dog_user_pairs", "users"
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.date "date"
+    t.text "description"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followee_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "attendees", "dogs"
+  add_foreign_key "attendees", "events"
 end

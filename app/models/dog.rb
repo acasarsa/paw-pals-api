@@ -1,4 +1,11 @@
 class Dog < ApplicationRecord
-has_many :dog_user_pairs, dependent: :destroy
-has_many :user, through: :dog_user_pairs
+has_many :attendees, dependent: :destroy
+has_many :events, through: :attendees
+
+has_many :active_follows, foreign_key: :follower_id, class_name: 'Follow'
+has_many :followees, through: :active_follows
+
+has_many :being_followed, foreign_key: :followee_id, class_name: 'Follow'
+has_many :followers, through: :being_followed
+
 end

@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+<!-- future additions  -->
+* event_host_table :dog_id :event_id 
+    - one to many relationship event has_one event_host one dog is event host. 
+    - dogs can be hosts of many events  
