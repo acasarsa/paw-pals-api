@@ -40,7 +40,7 @@ dog_images = [
     "https://cdn2.thedogapi.com/images/ByUgoQiE7.gif", 
     "https://cdn2.thedogapi.com/images/r156pDT4m.gif", 
     "https://cdn2.thedogapi.com/images/rJifQpT4m.gif", 
-    "https://i.ibb.co/KGRYtmb/tenor.gif", 
+    "https://cdn2.thedogapi.com/images/SJY6N6aVQ.gif", 
     "https://cdn2.thedogapi.com/images/S10gmTTVQ.gif", 
     "https://cdn2.thedogapi.com/images/rk9k4aTNm.gif", 
     "https://cdn2.thedogapi.com/images/r14eVa6EX.gif", 

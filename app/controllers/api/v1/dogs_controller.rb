@@ -16,7 +16,7 @@ class Api::V1::DogsController < ApplicationController
     end
 
     def create 
-        dog = Dog.create(dog_params)
+        dog = Dog.find_or_create_by(dog_params)
         render json: dog
     end
 
