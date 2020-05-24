@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
     namespace :api do 
       namespace :v1 do
-        resources :dogs, only: [:show, :index]
+        resources :dogs, only: [:show, :index, :create, :update]
         resources :events, only: [:show, :create, :update, :destroy, :index]
         resources :follows, only: [:show, :create, :destroy]
         resources :attendees, only: [:show, :index, :create, :destroy]
