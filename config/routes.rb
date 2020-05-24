@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
     namespace :api do 
       namespace :v1 do
-        resources :meet_ups, except: [:index]
-        resources :dog_user_pairs, only: [:show, :create, :destroy]
-        resources :dogs, only: [:show, :index]
-        resources :users, except: [:index, :destroy]
+        resources :dogs, only: [:show, :index, :create, :update]
+        resources :events, only: [:show, :create, :update, :destroy, :index]
+        resources :follows, only: [:show, :create, :destroy]
+        resources :attendees, only: [:show, :index, :create, :destroy]
+
       end
     end
   
