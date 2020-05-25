@@ -95,7 +95,7 @@ end
     )
     e2 = Event.create!(
         title: "Pool Party!",
-        date: Date.new(20,07,04),
+        date: Date.new(2020,07,04),
         description: "hooman haz lotz of snakz",
         image: 'https://i.ibb.co/tq5TVmG/pool-doggo.jpg'
         # image: '../public/images/park-dogs.png'
