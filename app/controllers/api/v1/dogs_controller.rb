@@ -8,6 +8,11 @@ class Api::V1::DogsController < ApplicationController
         dogs = Dog.all
         render json: DogSerializer.new(dogs)
     end
+
+    def login
+        dog = Dog.find_by(username: params[:username])
+        render json: dog, except: [:created_at, :updated_at], include: [:followers, :followees ], status: 201
+    end
     
     def show
         # byebug
@@ -16,9 +21,7 @@ class Api::V1::DogsController < ApplicationController
         # render json: DogSerializer.new(dog)
     end
     
-    def login
-        dog = Dog.find_by(username: params[:username])
-    end
+    
 
 
     def create 
