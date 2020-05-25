@@ -67,7 +67,7 @@ user = [
         description: Faker::Creature::Dog.meme_phrase,
         favorite_toy: "stuffed" + " " + Faker::Creature::Animal.name,
         human: Faker::Name.first_name,
-        username: user.pop(), 
+        username: user.shift(), 
         password: '123'
     )
 end
