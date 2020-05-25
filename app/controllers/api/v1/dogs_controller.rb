@@ -11,19 +11,19 @@ class Api::V1::DogsController < ApplicationController
     
     def show
         dog = Dog.find(params[:id])
-        render json: dog
+        render json: dog, except: [:created_at, :updated_at], include: [:followers, :followees ], status: 201
         # render json: DogSerializer.new(dog)
     end
 
     def create 
         dog = Dog.find_or_create_by(dog_params)
-        render json: dog
+        render json: dog, except: [:created_at, :updated_at], include: [:followers, :followees ], status: 201
     end
 
     def update
         dog = Dog.find(params[:id])
         dog.update(dog_params)
-        render json: dog
+        render json: dog, except: [:created_at, :updated_at], include: [:followers, :followees ], status: 201
     end
 
     private

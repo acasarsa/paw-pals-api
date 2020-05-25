@@ -1,8 +1,9 @@
 class Api::V1::EventsController < ApplicationController
-    before_action :find_event, only: [:show, :update, :destroy ]
+    # before_action :find_event, only: [:update, :destroy ]
 
     def show 
-        render json: event
+        event = Event.find(params[:id])
+        render json: EventSerializer.new(event)
     end
 
     def index 
@@ -12,15 +13,17 @@ class Api::V1::EventsController < ApplicationController
 
     def create
         event = Event.create!(event_params)
-        render json: event
+        render json: EventSerializer.new(event)
     end
 
     def update
+        event = Event.find(params[:id])
         event.update(event_params)
-        render json: event
+        render json: EventSerializer.new(event)
     end
 
     def destroy 
+        event = Event.find(params[:id])
         event.destroy
     end
 
@@ -30,7 +33,7 @@ class Api::V1::EventsController < ApplicationController
         params.require(:event).permit(:title, :date, :image, :description)
     end
 
-    def find_event
-        event = Event.find(params[:id])
-    end
+    # def find_event
+    #     event = Event.find(params[:id])
+    # end
 end
