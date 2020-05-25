@@ -8,6 +8,7 @@ has_many :followees, through: :active_follows
 has_many :being_followed, foreign_key: :followee_id, class_name: 'Follow'
 has_many :followers, through: :being_followed
 
-validates :username, uniqueness: true
+validates :username, uniqueness: true, presence: true 
+has_secure_password 
 
 end

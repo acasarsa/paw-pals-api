@@ -26,6 +26,8 @@ class Api::V1::DogsController < ApplicationController
         render json: dog
     end
 
+
+
     private
 
     def dog_params

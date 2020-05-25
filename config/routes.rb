@@ -6,6 +6,8 @@ Rails.application.routes.draw do
         resources :events, only: [:show, :create, :update, :destroy, :index]
         resources :follows, only: [:show, :create, :destroy]
         resources :attendees, only: [:show, :index, :create, :destroy]
+        post '/login', to: 'auth#login'
+        get '/profile', to: 'users#profile'
 
       end
     end
