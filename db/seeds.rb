@@ -51,7 +51,9 @@ dog_images = [
     "https://cdn2.thedogapi.com/images/HkD1LppV7.gif"
 ]
 
-
+user = [
+    "user1", "user2", "user3", "user4", "user5", "user6", "user7", "user8", "user9", "user10", "user11", "user12"
+]
 
 12.times do 
     Dog.create!(
@@ -65,7 +67,7 @@ dog_images = [
         description: Faker::Creature::Dog.meme_phrase,
         favorite_toy: "stuffed" + " " + Faker::Creature::Animal.name,
         human: Faker::Name.first_name,
-        username: Faker::Superhero.name.downcase,
+        username: user.pop(), 
         password: '123'
     )
 end
