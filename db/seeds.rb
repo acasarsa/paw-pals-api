@@ -104,7 +104,7 @@ end
 
     follow0 = Follow.create!(follower: Dog.first, followee: Dog.second)
     follow1 = Follow.create!(follower: Dog.second, followee: Dog.first)
-    follow2 = Follow.create!(follower: Dog.third, followee: Dog.second )
+    follow2 = Follow.create!(follower: Dog.third, followee: Dog.second)
     follow3 = Follow.create!(follower: Dog.fourth, followee: Dog.second)
     follow4 = Follow.create!(follower: Dog.fifth, followee: Dog.second)
     follow5 = Follow.create!(follower: Dog.fourth, followee: Dog.first)
