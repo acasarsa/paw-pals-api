@@ -2,8 +2,8 @@ class Api::V1::FollowsController < ApplicationController
 
     def show
         follow = Follow.find(params[:id])
-        render json: FollowSerializer.new(follow)
-        # render json: follow, except: [:created_at, :updated_at]
+        render json: FollowSerializer.new(follow).serializable_hash, status: 201
+        # render json: follow, except: [:created_at, :updated_at], include: [:follower, :followee ], status: 201
         
     end
 
