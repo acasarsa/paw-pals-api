@@ -5,7 +5,7 @@ Rails.application.routes.draw do
         resources :dogs, only: [:show, :index, :create, :update]
         get 'dogs/login/:username', to: 'dogs#login'
         resources :events, only: [:show, :create, :update, :destroy, :index]
-        resources :follows, only: [:show, :create, :destroy]
+        resources :follows, only: [:show, :create, :index, :destroy]
         resources :attendees, only: [:show, :index, :create, :destroy]
 
       end
