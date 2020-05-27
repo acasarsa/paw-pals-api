@@ -16,7 +16,7 @@ class Api::V1::FollowsController < ApplicationController
 
     def create 
         follow = Follow.create!(follow_params)
-        render json: {followee: follow.followee, follower: follow.follower}, except: [:created_at, :updated_at], status: :ok
+        render json:{follow_id: follow.id, followee: follow.followee, follower: follow.follower}, except: [:created_at, :updated_at], status: :ok
         # amaze balls do i even need serializer??? 
         # render json: { complex: complex, fields: fields, search_params: search_params }, status: :ok
 

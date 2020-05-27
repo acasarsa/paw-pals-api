@@ -37,18 +37,19 @@ puts "...destroying attendees"
 #     .catch(error => console.log('error', error));
 
 dog_images = [
-    "https://cdn2.thedogapi.com/images/ByUgoQiE7.gif", 
-    "https://cdn2.thedogapi.com/images/r156pDT4m.gif", 
-    "https://cdn2.thedogapi.com/images/rJifQpT4m.gif", 
-    "https://cdn2.thedogapi.com/images/SJY6N6aVQ.gif", 
+    "https://cdn2.thedogapi.com/images/rkq57TpVm.gif",
+    "https://cdn2.thedogapi.com/images/ByUgoQiE7.gif",
+    "https://cdn2.thedogapi.com/images/Bkf4Ea6NX.gif", 
+    "https://cdn2.thedogapi.com/images/HkD1LppV7.gif",
     "https://cdn2.thedogapi.com/images/S10gmTTVQ.gif", 
     "https://cdn2.thedogapi.com/images/rk9k4aTNm.gif", 
     "https://cdn2.thedogapi.com/images/r14eVa6EX.gif", 
     "https://cdn2.thedogapi.com/images/BJUum6T4X.gif", 
-    "https://cdn2.thedogapi.com/images/H1iHQpaVX.gif", 
-    "https://cdn2.thedogapi.com/images/rkq57TpVm.gif", 
-    "https://cdn2.thedogapi.com/images/Bkf4Ea6NX.gif", 
-    "https://cdn2.thedogapi.com/images/HkD1LppV7.gif"
+    "https://cdn2.thedogapi.com/images/H1iHQpaVX.gif",
+    "https://cdn2.thedogapi.com/images/r156pDT4m.gif", 
+    "https://cdn2.thedogapi.com/images/rJifQpT4m.gif", 
+    "https://cdn2.thedogapi.com/images/SJY6N6aVQ.gif"
+    
 ]
 
 user = [
