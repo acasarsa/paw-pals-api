@@ -13,8 +13,8 @@ Dog.destroy_all
 puts "... destorying dogs"
 Event.destroy_all
 puts "...destroying events"
-Follow.destroy_all
-puts "... destroying follows"
+# Follow.destroy_all
+# puts "... destroying follows"
 Attendee.destroy_all
 puts "...destroying attendees"
 
@@ -37,18 +37,19 @@ puts "...destroying attendees"
 #     .catch(error => console.log('error', error));
 
 dog_images = [
-    "https://cdn2.thedogapi.com/images/ByUgoQiE7.gif", 
-    "https://cdn2.thedogapi.com/images/r156pDT4m.gif", 
-    "https://cdn2.thedogapi.com/images/rJifQpT4m.gif", 
-    "https://cdn2.thedogapi.com/images/SJY6N6aVQ.gif", 
+    "https://cdn2.thedogapi.com/images/rkq57TpVm.gif",
+    "https://cdn2.thedogapi.com/images/ByUgoQiE7.gif",
+    "https://cdn2.thedogapi.com/images/Bkf4Ea6NX.gif", 
+    "https://cdn2.thedogapi.com/images/HkD1LppV7.gif",
     "https://cdn2.thedogapi.com/images/S10gmTTVQ.gif", 
     "https://cdn2.thedogapi.com/images/rk9k4aTNm.gif", 
     "https://cdn2.thedogapi.com/images/r14eVa6EX.gif", 
     "https://cdn2.thedogapi.com/images/BJUum6T4X.gif", 
-    "https://cdn2.thedogapi.com/images/H1iHQpaVX.gif", 
-    "https://cdn2.thedogapi.com/images/rkq57TpVm.gif", 
-    "https://cdn2.thedogapi.com/images/Bkf4Ea6NX.gif", 
-    "https://cdn2.thedogapi.com/images/HkD1LppV7.gif"
+    "https://cdn2.thedogapi.com/images/H1iHQpaVX.gif",
+    "https://cdn2.thedogapi.com/images/r156pDT4m.gif", 
+    "https://cdn2.thedogapi.com/images/rJifQpT4m.gif", 
+    "https://cdn2.thedogapi.com/images/SJY6N6aVQ.gif"
+    
 ]
 
 user = [
@@ -102,12 +103,12 @@ end
     )
 
 
-    follow0 = Follow.create!(follower: Dog.first, followee: Dog.second)
-    follow1 = Follow.create!(follower: Dog.second, followee: Dog.first)
-    follow2 = Follow.create!(follower: Dog.third, followee: Dog.second)
-    follow3 = Follow.create!(follower: Dog.fourth, followee: Dog.second)
-    follow4 = Follow.create!(follower: Dog.fifth, followee: Dog.second)
-    follow5 = Follow.create!(follower: Dog.fourth, followee: Dog.first)
+    # follow0 = Follow.create!(follower: Dog.first, followee: Dog.second)
+    # follow1 = Follow.create!(follower: Dog.second, followee: Dog.first)
+    # follow2 = Follow.create!(follower: Dog.third, followee: Dog.second)
+    # follow3 = Follow.create!(follower: Dog.fourth, followee: Dog.second)
+    # follow4 = Follow.create!(follower: Dog.fifth, followee: Dog.second)
+    # follow5 = Follow.create!(follower: Dog.fourth, followee: Dog.first)
 
     # follow0 = Follow.create!(follower_id: Dog.first.id, followee_id: Dog.second.id)
     # follow1 = Follow.create!(follower_id: Dog.second.id, followee_id: Dog.first.id)

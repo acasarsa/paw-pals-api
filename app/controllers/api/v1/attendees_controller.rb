@@ -2,8 +2,8 @@ class Api::V1::AttendeesController < ApplicationController
 
     def index
         attendees = Attendee.all
-        # render json: attendees
-        render json: AttendeeSerializer.new(attendees)
+        render json: attendees
+        # render json: AttendeeSerializer.new(attendees)
     end
 
     def show
