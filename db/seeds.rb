@@ -1,92 +1,56 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'rest-client'
 require 'json'
-
 
 Dog.destroy_all
 puts "... destorying dogs"
 Event.destroy_all
 puts "...destroying events"
-# Follow.destroy_all
-# puts "... destroying follows"
 Attendee.destroy_all
 puts "...destroying attendees"
 
 
-
-# rm = RestClient.get 
-# var myHeaders = new Headers();
-# myHeaders.append("Content-Type", "application/json");
-# myHeaders.append("x-api-key", "7a0562dd-e88b-4108-9081-868896d0f864");
-
-# var requestOptions = {
-#     method: 'GET',
-#     headers: myHeaders,
-#     redirect: 'follow'
-# };
-
-# fetch("https://api.thedogapi.com/v1/favourites", requestOptions)
-#     .then(response => response.text())
-#     .then(result => console.log(result))
-#     .catch(error => console.log('error', error));
+# used DogAPI to fill db with selected gif's because they were more stable than ones we found ourselves. Due to repeat images and poor quality images we opted to select them ourselves after useing PostMan to navigate the API. 
 
 dog_images = [
     "https://cdn2.thedogapi.com/images/rkq57TpVm.gif",
     "https://cdn2.thedogapi.com/images/ByUgoQiE7.gif",
     "https://cdn2.thedogapi.com/images/Bkf4Ea6NX.gif", 
-    "https://cdn2.thedogapi.com/images/HkD1LppV7.gif",
+    "https://cdn2.thedogapi.com/images/B1fG6PT4Q.gif",
     "https://cdn2.thedogapi.com/images/S10gmTTVQ.gif", 
     "https://cdn2.thedogapi.com/images/rk9k4aTNm.gif", 
+    "https://cdn2.thedogapi.com/images/Bk4phvp47.gif",
+    "https://cdn2.thedogapi.com/images/SJJtcXs4m.gif",
     "https://cdn2.thedogapi.com/images/r14eVa6EX.gif", 
-    "https://cdn2.thedogapi.com/images/BJUum6T4X.gif", 
-    "https://cdn2.thedogapi.com/images/H1iHQpaVX.gif",
-    "https://cdn2.thedogapi.com/images/r156pDT4m.gif", 
+    "https://cdn2.thedogapi.com/images/r13yimo4Q.gif",
     "https://cdn2.thedogapi.com/images/rJifQpT4m.gif", 
-    "https://cdn2.thedogapi.com/images/SJY6N6aVQ.gif"
+    "https://cdn2.thedogapi.com/images/SJY6N6aVQ.gif",
+    "https://cdn2.thedogapi.com/images/HJ1297iE7.gif",
+    "https://cdn2.thedogapi.com/images/H1iHQpaVX.gif",
+    "https://cdn2.thedogapi.com/images/BJUum6T4X.gif", 
+    "https://cdn2.thedogapi.com/images/r156pDT4m.gif", 
     
 ]
 
 user = [
-    "user1", "user2", "user3", "user4", "user5", "user6", "user7", "user8", "user9", "user10", "user11", "user12"
+    "user1", "user2", "user3", "user4", "user5", "user6", "user7", "user8", "user9", "user10", "user11", "user12", "user13", "user14", "user15", "user16"
 ]
 
-12.times do 
+16.times do 
     Dog.create!(
-        name: Faker::Creature::Dog.name, 
+        name: Faker::Creature::Dog.name.titleize, 
         breed: Faker::Creature::Dog.breed, 
-        status: Faker::Creature::Dog.sound, 
-        age: Faker::Creature::Dog.age, 
+        status: Faker::Creature::Dog.sound.titleize, 
+        age: Faker::Creature::Dog.age.titleize, 
         gender: Faker::Creature::Dog.gender, 
-        size: Faker::Creature::Dog.size, 
+        size: Faker::Creature::Dog.size.titleize, 
         image: dog_images.pop(), 
-        description: Faker::Creature::Dog.meme_phrase,
-        favorite_toy: "stuffed" + " " + Faker::Creature::Animal.name,
-        human: Faker::Name.first_name,
+        description: Faker::Creature::Dog.meme_phrase.titleize,
+        favorite_toy: "Stuffed" + " " + Faker::Creature::Animal.name.titleize,
+        human: Faker::Name.first_name.titleize,
         username: user.shift(), 
         password: '123'
     )
 end
-
-# t.string :name
-# t.string :breed
-# t.text :status
-# t.string :age
-# t.string :gender
-# t.string :size
-# t.string :image
-# t.text :description
-# t.text :favorite_toy
-# t.string :human
-# t.string :username
-# t.string :password
-
-
 
     e1 = Event.create!(
         title: "Park Party!!",
@@ -95,27 +59,18 @@ end
         image: 'https://i.ibb.co/Gc8R0t1/txhh-best-practices-when-taking-dog-park.png'
     )
     e2 = Event.create!(
+        title: "Dance PARTY With Snoop and Lil BowWow",
+        date: Date.new(2020,06,04),
+        description: "Throw back Jamz All Day! Unrestricted access to the yard. There will be a contest for deepest hole.",
+        image: 'https://external-preview.redd.it/SXQd2ePRhUpm-T-6utiUsa_-wSuez9aD2vfiZKUbc-s.jpg?auto=webp&s=abc72eddc7f3b1dfb4f795753675e215c6db2754'
+
+    )
+    e3 = Event.create!(
         title: "Pool Party!",
         date: Date.new(2020,07,04),
         description: "hooman haz lotz of snakz",
         image: 'https://i.ibb.co/tq5TVmG/pool-doggo.jpg'
-        # image: '../public/images/park-dogs.png'
     )
-
-
-    # follow0 = Follow.create!(follower: Dog.first, followee: Dog.second)
-    # follow1 = Follow.create!(follower: Dog.second, followee: Dog.first)
-    # follow2 = Follow.create!(follower: Dog.third, followee: Dog.second)
-    # follow3 = Follow.create!(follower: Dog.fourth, followee: Dog.second)
-    # follow4 = Follow.create!(follower: Dog.fifth, followee: Dog.second)
-    # follow5 = Follow.create!(follower: Dog.fourth, followee: Dog.first)
-
-    # follow0 = Follow.create!(follower_id: Dog.first.id, followee_id: Dog.second.id)
-    # follow1 = Follow.create!(follower_id: Dog.second.id, followee_id: Dog.first.id)
-    # follow2 = Follow.create!(follower_id: Dog.first.id, followee_id: Dog.third.id )
-    # follow3 = Follow.create!(follower_id: Dog.last.id, followee_id: Dog.fifth.id)
-    # follow4 = Follow.create!(follower_id: Dog.fifth.id, followee_id: Dog.fourth.id)
-    # follow5 = Follow.create!(follower_id: Dog.fourth.id, followee_id: Dog.fifth.id)
 
     a1 = Attendee.create!(dog: Dog.first, event: Event.first)
     a2 = Attendee.create!(dog: Dog.first, event: Event.last)
@@ -126,42 +81,9 @@ end
     a7 = Attendee.create!(dog: Dog.fourth, event: Event.first)
     a8 = Attendee.create!(dog: Dog.fifth, event: Event.last)
     a9 = Attendee.create!(dog: Dog.fourth, event: Event.last)
-
-# Faker::Books::Lovecraft.sentence - maybe for description
-# Faker::JapaneseMedia::SwordArtOnline.item for favorite_toy
-# Faker::Appliance.equipment ^
-# Faker::Games::Zelda.item ^
-# Faker::Games::Dota.item ^
-
-# t.string :name
-# t.string :breed
-# t.text :status
-# t.string :age
-# t.string :gender
-# t.string :size
-# t.string :image
-# t.text :description
-# t.text :favorite_toy
-# t.string :human
-# t.string :username
-# t.string :password
-
-# 6.times do
-#     DogUserPair.create!(user: User.all.sample, dog: Dog.all.sample)
-# end
-
-# meetup1 = MeetUp.create(first_dog_user_pair_id: DogUserPair.first.id,  second_dog_user_pair_id: DogUserPair.last.id, date: Date.parse("05/30/2020"))
-# meetup2 = MeetUp.create(first_dog_user_pair_id: DogUserPair.first.id,  second_dog_user_pair_id: DogUserPair.second.id, date: Date.parse("05/24/2020"))
-# meetup3 = MeetUp.create(first_dog_user_pair_id: DogUserPair.last.id,  second_dog_user_pair_id: DogUserPair.last.id, date: Date.parse("05/23/2020"))
-# meetup4 = MeetUp.create(first_dog_user_pair_id: DogUserPair.second.id,  second_dog_user_pair_id: DogUserPair.first.id, date: Date.parse("06/01/2020"))
-# meetup5 = MeetUp.create(first_dog_user_pair_id: DogUserPair.fifth.id,  second_dog_user_pair_id: DogUserPair.fifth.id, date: Date.parse("05/28/2020"))
-# meetup6 = MeetUp.create(first_dog_user_pair_id: DogUserPair.fourth.id,  second_dog_user_pair_id: DogUserPair.last.id, date: Date.parse("05/27/2020"))
-
-
+    a10 = Attendee.create!(dog: Dog.last, event: Event.second)
+    a11 = Attendee.create!(dog: Dog.fourth, event: Event.second)
+    a12 = Attendee.create!(dog: Dog.first, event: Event.second)
+    a13 = Attendee.create!(dog: Dog.second, event: Event.second)
 
 puts "...done seeding"
-
-
-
-
-# 7a0562dd-e88b-4108-9081-868896d0f864

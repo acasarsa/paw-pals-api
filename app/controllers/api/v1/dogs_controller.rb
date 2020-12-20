@@ -1,8 +1,5 @@
 
 class Api::V1::DogsController < ApplicationController
-
-    # show, index, update, create 
-
     
     def index
         dogs = Dog.all
@@ -15,10 +12,8 @@ class Api::V1::DogsController < ApplicationController
     end
     
     def show
-        # byebug
         dog = Dog.find_by(id: params[:id])
         render json: dog, except: [:created_at, :updated_at], include: [:followers, :followees ], status: 201
-        # render json: DogSerializer.new(dog)
     end
     
     
@@ -42,16 +37,3 @@ class Api::V1::DogsController < ApplicationController
     end
 end
 
-
-# t.string :name
-# t.string :breed
-# t.text :status
-# t.string :age
-# t.string :gender
-# t.string :size
-# t.string :image
-# t.text :description
-# t.text :favorite_toy
-# t.string :human
-# t.string :username
-# t.string :password

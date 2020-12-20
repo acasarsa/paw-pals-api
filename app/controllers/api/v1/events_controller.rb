@@ -1,5 +1,5 @@
 class Api::V1::EventsController < ApplicationController
-    # before_action :find_event, only: [:update, :destroy ]
+    # before_action :find_event, only: [:update, :destroy] # wasn't working right so couldn't use this callback
 
     def show 
         event = Event.find(params[:id])
